@@ -1,0 +1,87 @@
+@import './variables';
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,600);
+
+html,
+body {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    background: $black;
+    color: $white;
+    padding: $large_spacing $medium_spacing;
+
+    @include responsive('<', 600px) {
+        padding: $small_spacing $tiny_spacing;
+    }
+}
+
+input,
+textarea {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em;
+
+    @include responsive('<', 600px) {
+        font-size: 0.8em;
+    }
+}
+
+*,
+*:before,
+*:after {
+    // all elements use border-box as <html> but are easily overridable as needed
+    box-sizing: inherit;
+}
+
+h1 {
+    font-size: 3em;
+    margin: $medium_spacing 0;
+
+    @include responsive('<', 600px) {
+        font-size: 2.22em;
+    }
+
+    @include responsive('<', 375px) {
+        font-size: 1.98em;
+    }
+}
+
+h2 {
+    font-size: 1.34em;
+    margin: 0;
+
+    @include responsive('<', 600px) {
+        font-size: 1em;
+    }
+
+    @include responsive('<', 375px) {
+        font-size: 0.88em;
+    }
+}
+
+a.button,
+a.button:visited,
+a.button:active,
+a.button:link {
+    display: block;
+    text-decoration: none;
+    border: 4px solid $green;
+    border-radius: $standard_border_radius;
+    padding: $medium_spacing $xlarge_spacing;
+    color: $green;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: background $short_duration, color $short_duration;
+
+    &:hover {
+        background: $green;
+        color: $white;
+    }
+
+    &.disabled {
+        background: $red;
+        color: $white;
+        border-color: $red;
+    }
+}

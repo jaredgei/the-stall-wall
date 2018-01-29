@@ -1,0 +1,59 @@
+{
+    "root": true,
+    "rules": {
+        "indent": ["error", 4],
+        "quotes": ["warn", "single"],
+        "linebreak-style": ["error", "unix"],
+        "semi": ["error", "always"],
+        "no-unused-vars": ["warn", { "vars": "all", "args": "none"}],
+        "no-console": "off",
+        "no-constant-condition": "warn",
+        "no-eval": "error",
+        "eqeqeq": "error",
+        "space-before-function-paren": ["error", {"anonymous": "always", "named": "never"}],
+        "space-infix-ops": ["error", {"int32Hint": false}],
+        "space-in-parens": ["error", "never"],
+        "space-before-blocks": ["error", "always"],
+        "keyword-spacing": "error",
+        "default-case": "warn",
+        "no-extra-bind": "warn",
+        "no-trailing-spaces": "error",
+        "no-mixed-spaces-and-tabs": "error",
+        "key-spacing": ["error", {"beforeColon": false, "afterColon": true}],
+        "no-func-assign": "error",
+        "no-negated-in-lhs": "error",
+        "no-redeclare": "error",
+        "no-unused-expressions": "error",
+        "dot-notation": "error",
+        "eol-last": "error",
+        "comma-dangle": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "no-undef": ["error", {"typeof": true}],
+        "rest-spread-spacing": "error",
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "react/no-unescaped-entities": "off"
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "classes": true,
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "plugins": [
+        "babel",
+        "react",
+        "jsx-a11y"
+    ]
+}

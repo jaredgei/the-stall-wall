@@ -1,0 +1,7 @@
+/node_modules
+/dist/hot
+.DS_Store
+bundle.js
+npm-debug.log
+yarn.lock
+messages.db

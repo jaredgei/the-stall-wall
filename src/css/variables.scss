@@ -1,0 +1,42 @@
+$black: #504d4d;
+$gray: #675A55;
+$light_gray: #d6dbdb;
+$white: #ffffff;
+$red: #D07677;
+$blue: #559B9B;
+$green: #9DB991;
+$yellow: #E8C194;
+
+$tiny_spacing: 4px;
+$small_spacing: 8px;
+$medium_spacing: 16px;
+$large_spacing: 24px;
+$xlarge_spacing: 48px;
+
+$short_duration: 0.2s;
+$standard_border_radius: 4px;
+
+$directions: (
+    '<': max-width,
+    '<=': max-width,
+    '>': min-width,
+    '>=': min-width,
+    between: between
+);
+
+@mixin responsive($direction, $px, $px2: null) {
+    $dir: map-get($directions, $direction);
+    @if $dir == null {
+        @warn 'missing direction "#{$direction}"';
+    } @else {
+        @if $dir == 'between' and $px2 != null {
+            @media only screen and (min-width: $px) and (max-width: $px2) {
+                @content;
+            }
+        } @else {
+            @media only screen and ($dir: $px) {
+                @content;
+            }
+        }
+    }
+}

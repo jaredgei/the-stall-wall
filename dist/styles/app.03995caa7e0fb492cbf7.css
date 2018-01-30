@@ -15,6 +15,11 @@
   .home .copyright {
     margin-top: 48px;
     color: #d6dbdb; }
+    .home .copyright a,
+    .home .copyright a:link,
+    .home .copyright a:visited,
+    .home .copyright a:active {
+      color: #d6dbdb; }
 .room {
   display: flex;
   flex-direction: column;
@@ -189,4 +194,4 @@ a.button:link {
     color: #ffffff;
     border-color: #D07677; }
 
-/*# sourceMappingURL=app.e15f3ed3309535c79c87.css.map*/
+/*# sourceMappingURL=app.03995caa7e0fb492cbf7.css.map*/

@@ -26,5 +26,12 @@
     .copyright {
         margin-top: $xlarge_spacing;
         color: $light_gray;
+
+        a,
+        a:link,
+        a:visited,
+        a:active {
+            color: $light_gray;
+        }
     }
 }

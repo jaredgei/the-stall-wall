@@ -1,0 +1,32 @@
+@import './variables';
+
+.message {
+    position: relative;
+    background: $white;
+    color: $black;
+    padding: $medium_spacing $large_spacing;
+    padding-bottom: $large_spacing + $medium_spacing;
+    margin: $medium_spacing 0;
+    border-radius: $standard_border_radius;
+
+    .messageSignature {
+        color: $light_gray;
+        font-style: italic;
+        position: absolute;
+        bottom: $small_spacing;
+        right: $medium_spacing;
+    }
+
+    &.optimistic {
+        opacity: 0.5;
+    }
+
+    &.error {
+        background: $red;
+        color: $white;
+
+        .messageSignature {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,199 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,600);.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .home h1 {
+    text-align: center; }
+  .home .logo {
+    max-width: 220px;
+    margin: 24px 0; }
+  .home .description {
+    margin: 16px 0 48px 0;
+    font-size: 1.2em; }
+    .home .description .subtitle {
+      color: #E8C194; }
+  .home .copyright {
+    margin-top: 48px;
+    color: #d6dbdb; }
+    .home .copyright a,
+    .home .copyright a:link,
+    .home .copyright a:visited,
+    .home .copyright a:active {
+      color: #d6dbdb; }
+.message {
+  position: relative;
+  background: #ffffff;
+  color: #504d4d;
+  padding: 16px 24px;
+  padding-bottom: 40px;
+  margin: 16px 0;
+  border-radius: 4px; }
+  .message .messageSignature {
+    color: #d6dbdb;
+    font-style: italic;
+    position: absolute;
+    bottom: 8px;
+    right: 16px; }
+  .message.optimistic {
+    opacity: 0.5; }
+  .message.error {
+    background: #D07677;
+    color: #ffffff; }
+    .message.error .messageSignature {
+      display: none; }
+.sendMessage {
+  background: #ffffff;
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  color: #504d4d;
+  align-items: flex-start;
+  margin: 48px 0;
+  width: 100%; }
+  .sendMessage .spacer {
+    border-right: 1px solid #d6dbdb;
+    align-self: stretch; }
+  .sendMessage a.sendButton,
+  .sendMessage a.sendButton:link,
+  .sendMessage a.sendButton:visited,
+  .sendMessage a.sendButton:active {
+    background: #9DB991;
+    color: #ffffff;
+    text-decoration: none;
+    align-self: stretch;
+    padding: 8px 16px;
+    transition: background 0.2s;
+    display: flex;
+    justify-content: center; }
+    .sendMessage a.sendButton:hover,
+    .sendMessage a.sendButton:link:hover,
+    .sendMessage a.sendButton:visited:hover,
+    .sendMessage a.sendButton:active:hover {
+      background: #b9cdb0; }
+    .sendMessage a.sendButton.disabled,
+    .sendMessage a.sendButton:link.disabled,
+    .sendMessage a.sendButton:visited.disabled,
+    .sendMessage a.sendButton:active.disabled {
+      background: #d6dbdb; }
+  .sendMessage input[type=text],
+  .sendMessage textarea {
+    border: none;
+    padding: 16px 8px; }
+    .sendMessage input[type=text]:focus,
+    .sendMessage textarea:focus {
+      outline: none; }
+  .sendMessage input[type=text] {
+    max-width: 148px;
+    height: 51px; }
+    @media only screen and (max-width: 600px) {
+      .sendMessage input[type=text] {
+        max-width: 120px; } }
+    @media only screen and (max-width: 375px) {
+      .sendMessage input[type=text] {
+        display: none; } }
+  .sendMessage textarea {
+    flex: 1;
+    resize: none;
+    height: 0px;
+    min-height: 51px;
+    overflow: hidden;
+    transition: height 0.2s; }
+    @media only screen and (max-width: 600px) {
+      .sendMessage textarea {
+        padding-top: 18px; } }
+.room {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .room h1 {
+    margin-bottom: 0; }
+  .room .wipeButton {
+    margin-top: 48px; }
+  .room .subtitle {
+    color: #E8C194;
+    margin-bottom: 16px; }
+    .room .subtitle .countdown {
+      color: #559B9B; }
+  .room .messages {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 456px; }
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  background: #504d4d;
+  color: #ffffff;
+  padding: 24px 16px; }
+  @media only screen and (max-width: 600px) {
+    html,
+    body {
+      padding: 8px 4px; } }
+
+input,
+textarea {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  line-height: 1em; }
+  @media only screen and (max-width: 600px) {
+    input,
+    textarea {
+      font-size: 0.8em;
+      line-height: 0.8em; } }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+h1 {
+  font-size: 3em;
+  margin: 16px 0; }
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 2.22em; } }
+  @media only screen and (max-width: 375px) {
+    h1 {
+      font-size: 1.98em; } }
+
+h2 {
+  font-size: 1.34em;
+  margin: 0; }
+  @media only screen and (max-width: 600px) {
+    h2 {
+      font-size: 1em; } }
+  @media only screen and (max-width: 375px) {
+    h2 {
+      font-size: 0.88em; } }
+
+a.button,
+a.button:visited,
+a.button:active,
+a.button:link {
+  display: block;
+  text-decoration: none;
+  border: 4px solid #9DB991;
+  border-radius: 4px;
+  padding: 16px 48px;
+  color: #9DB991;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s; }
+  a.button:hover,
+  a.button:visited:hover,
+  a.button:active:hover,
+  a.button:link:hover {
+    background: #9DB991;
+    color: #ffffff; }
+  a.button.disabled,
+  a.button:visited.disabled,
+  a.button:active.disabled,
+  a.button:link.disabled {
+    background: #D07677;
+    color: #ffffff;
+    border-color: #D07677; }
+
+/*# sourceMappingURL=app.0494eb586a018d91144d.css.map*/

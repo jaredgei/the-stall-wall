@@ -48,6 +48,13 @@ class Home extends React.Component {
         history: PropTypes.object
     };
 
+    constructor() {
+        super();
+        this.state = {
+            attemptingEntry: false
+        };
+    }
+
     componentDidMount() {
         this.props.data.subscribeToMore({
             document: subscription,
@@ -68,18 +75,26 @@ class Home extends React.Component {
         const { status } = this.props.data;
         event.preventDefault();
 
-        if (!status || status.occupied) {
+        if (!status || status.occupied || this.state.attemptingEntry) {
             return;
         }
 
-        const userid = Cookies.get('userid');
-        mutate({
-            variables: {userid: userid},
-            update: (store, { data: { enterRoom } }) => {
-                if (enterRoom.userid === userid) { // If success
-                    history.push('/stall');
+        this.setState({
+            attemptingEntry: true
+        }, () => {
+            const userid = Cookies.get('userid');
+            mutate({
+                variables: {userid: userid},
+                update: (store, { data: { enterRoom } }) => {
+                    if (enterRoom.userid === userid) { // If success
+                        history.push('/stall');
+                    } else {
+                        this.setState({
+                            attemptingEntry: false
+                        });
+                    }
                 }
-            }
+            });
         });
     }
 
@@ -97,6 +112,8 @@ class Home extends React.Component {
         } else if (error) {
             buttonLabel = 'Error';
             extraButtonClasses = ' disabled';
+        } else if (this.state.attemptingEntry) {
+            buttonLabel = 'Entering...';
         } else {
             buttonLabel = status.occupied ? 'Occupied' : 'Vacant';
             extraButtonClasses = status.occupied ? ' disabled' : '';
@@ -120,7 +137,7 @@ class Home extends React.Component {
                     <span>&copy; </span>
                     <a href="mailto:swordfishwestco@gmail.com">Swordfish & West Co.</a>
                     <span> LLC 2018</span>
-                    </div>
+                </div>
             </div>
         );
     }

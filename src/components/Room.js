@@ -8,6 +8,8 @@ import {
 import Cookies from 'js-cookie';
 import gql from 'graphql-tag';
 
+import Message from './Message';
+import SendMessage from './SendMessage';
 import '../css/room.scss';
 
 const query = gql`
@@ -18,16 +20,6 @@ const query = gql`
             expires
         },
         messages {
-            _id,
-            text,
-            signature
-        }
-    }
-`;
-
-const addMessage = gql`
-    mutation addMessage($text: String!, $userid: String!, $signature: String) {
-        addMessage(text: $text, userid: $userid, signature: $signature) {
             _id,
             text,
             signature
@@ -64,7 +56,6 @@ class Room extends Component {
             messages: PropTypes.array,
             subscribeToMore: PropTypes.func
         }).isRequired,
-        addMessage: PropTypes.func.isRequired,
         leaveRoom: PropTypes.func.isRequired,
         history: PropTypes.object
     };
@@ -138,51 +129,10 @@ class Room extends Component {
         });
     }
 
-    handleKeyUp(event) {
-        const scrollHeight = this.textarea.scrollHeight;
-        this.textarea.style.height = 'auto';
-        this.textarea.style.height = scrollHeight + 'px';
-    }
-
-    handleKeyDown(event) {
-        if (event.keyCode === 13) {
-            this.sendMessage(event);
-        }
-    }
-
-    sendMessage(event) {
-        event.preventDefault();
-        const signature = this.nameInput.value;
-        const text = this.textarea.value;
-        if (this.sending || text.length === 0) {
-            return;
-        }
-        this.sending = true;
-        this.props.addMessage({
-            variables: {
-                text: text,
-                userid: this.userid,
-                signature: signature
-            },
-            optimisticResponse: {
-                addMessage: {
-                    text: text,
-                    signature: signature,
-                    _id: 'optimistic',
-                    __typename: 'Message'
-                }
-            },
-            update: (store, { data: { addMessage } }) => {
-                const data = store.readQuery({ query: query });
-                data.messages.unshift(addMessage);
-                store.writeQuery({ query: query, data });
-            }
-        }).then(res => {
-            this.nameInput.value = '';
-            this.textarea.value = '';
-            this.textarea.style.height = '0px';
-            this.sending = false;
-        });
+    updateMessages(store, { data: { addMessage } }) {
+        const data = store.readQuery({ query: query });
+        data.messages.unshift(addMessage);
+        store.writeQuery({ query: query, data });
     }
 
     render() {
@@ -194,10 +144,8 @@ class Room extends Component {
         } = this.props.data;
 
         let content;
-        if (loading) {
-            content = <h1>Loading...</h1>;
-        } else if (error) {
-            content = <h1>{error.message}</h1>;
+        if (loading || error) {
+            content = <h1>{error ? error.message : 'Loading...'}</h1>;
         } else if (!status.occupied || status.userid !== this.userid) {
             content = [
                 <h1 key='title'>Please leave the stall.</h1>,
@@ -205,14 +153,7 @@ class Room extends Component {
             ];
         } else {
             const timeLeft = this.state.secondsRemaining;
-            const messagesDom = messages.map(message => {
-                return (
-                    <div key={message._id} className={'message ' + message._id}>
-                        <div className='messageText'>&ldquo;{message.text}&rdquo;</div>
-                        <div className='messageSignature'>{message.signature || 'Anonymous'}</div>
-                    </div>
-                );
-            });
+            const messagesDom = messages.map(message => <Message message={message} key={message._id} />);
 
             content = (
                 <div>
@@ -223,29 +164,7 @@ class Room extends Component {
                         <span> to do your business</span>
                     </h2>
                     <div className='messages'>
-                        <div className='sendMessage'>
-                            <input
-                                type='text'
-                                placeholder='Name (optional)'
-                                ref={ref => this.nameInput = ref}
-                                maxLength={20}
-                            />
-                            <div className='spacer'></div>
-                            <textarea
-                                type='text'
-                                placeholder='Leave your mark...'
-                                ref={ref => this.textarea = ref}
-                                onKeyUp={this.handleKeyUp.bind(this)}
-                                onKeyDown={this.handleKeyDown.bind(this)}
-                            />
-                            <a
-                                href='#'
-                                onClick={this.sendMessage.bind(this)}
-                                className='sendButton'
-                            >
-                                <img className='logo' src={'/static/images/send.svg'} />
-                            </a>
-                        </div>
+                        <SendMessage update={this.updateMessages.bind(this)}/>
                         {messagesDom}
                     </div>
                 </div>
@@ -262,9 +181,6 @@ class Room extends Component {
 
 export default compose(
     graphql(query),
-    graphql(addMessage, {
-        name: 'addMessage'
-    }),
     graphql(leaveRoom, {
         name: 'leaveRoom'
     })

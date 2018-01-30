@@ -1,0 +1,74 @@
+@import './variables';
+
+.sendMessage {
+    background: $white;
+    display: flex;
+    border-radius: $standard_border_radius;
+    overflow: hidden;
+    color: $black;
+    align-items: flex-start;
+    margin: $xlarge_spacing 0;
+    width: 100%;
+
+    .spacer {
+        border-right: 1px solid $light_gray;
+        align-self: stretch;
+    }
+
+    a.sendButton,
+    a.sendButton:link,
+    a.sendButton:visited,
+    a.sendButton:active {
+        background: $green;
+        color: $white;
+        text-decoration: none;
+        align-self: stretch;
+        padding: $small_spacing $medium_spacing;
+        transition: background $short_duration;
+        display: flex;
+        justify-content: center;
+
+        &:hover {
+            background: lighten($green, 10%);
+        }
+        &.disabled {
+            background: $light_gray;
+        }
+    }
+
+    input[type=text],
+    textarea {
+        border: none;
+        padding: $medium_spacing $small_spacing;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    input[type=text] {
+        max-width: 148px;
+        height: 51px;
+
+        @include responsive('<', 600px) {
+            max-width: 120px;
+        }
+
+        @include responsive('<', 375px) {
+            display: none;
+        }
+    }
+
+    textarea {
+        flex: 1;
+        resize: none;
+        height: 0px;
+        min-height: 51px;
+        overflow: hidden;
+        transition: height $short_duration;
+
+        @include responsive('<', 600px) {
+            padding-top: 18px;
+        }
+    }
+}

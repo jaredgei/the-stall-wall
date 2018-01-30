@@ -116,6 +116,7 @@ class Home extends React.Component {
                     className={'button' + extraButtonClasses}>
                     {buttonLabel}
                 </a>
+                <div className="copyright">&copy; Swordfish & West Co. LLC 2018</div>
             </div>
         );
     }

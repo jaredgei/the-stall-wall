@@ -12,6 +12,9 @@
     font-size: 1.2em; }
     .home .description .subtitle {
       color: #E8C194; }
+  .home .copyright {
+    margin-top: 48px;
+    color: #d6dbdb; }
 .room {
   display: flex;
   flex-direction: column;
@@ -186,4 +189,4 @@ a.button:link {
     color: #ffffff;
     border-color: #D07677; }
 
-/*# sourceMappingURL=app.942b49117d82467e51f7.css.map*/
+/*# sourceMappingURL=app.e15f3ed3309535c79c87.css.map*/

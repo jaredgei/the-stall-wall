@@ -42,6 +42,13 @@ class SendMessage extends Component {
         }
     }
 
+    blockReturn(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            this.textarea.focus();
+        }
+    }
+
     sendMessage(event) {
         event.preventDefault();
         const signature = this.nameInput.value;
@@ -76,14 +83,18 @@ class SendMessage extends Component {
     render() {
         return (
             <div className='sendMessage'>
-                <input
+                <textarea
+                    className='nameInput'
                     type='text'
+                    rows='1'
                     placeholder='Name (optional)'
                     ref={ref => this.nameInput = ref}
-                    maxLength={20}
+                    maxLength={15}
+                    onKeyDown={this.blockReturn.bind(this)}
                 />
                 <div className='spacer'></div>
                 <textarea
+                    className='textInput'
                     type='text'
                     placeholder='Leave your mark...'
                     ref={ref => this.textarea = ref}

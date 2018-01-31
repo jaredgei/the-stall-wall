@@ -75,32 +75,32 @@
     .sendMessage a.sendButton:visited.disabled,
     .sendMessage a.sendButton:active.disabled {
       background: #d6dbdb; }
-  .sendMessage input[type=text],
   .sendMessage textarea {
     border: none;
-    padding: 16px 8px; }
-    .sendMessage input[type=text]:focus,
+    padding: 16px 8px;
+    resize: none; }
     .sendMessage textarea:focus {
       outline: none; }
-  .sendMessage input[type=text] {
-    max-width: 148px;
-    height: 51px; }
-    @media only screen and (max-width: 600px) {
-      .sendMessage input[type=text] {
-        max-width: 120px; } }
-    @media only screen and (max-width: 375px) {
-      .sendMessage input[type=text] {
-        display: none; } }
-  .sendMessage textarea {
-    flex: 1;
-    resize: none;
-    height: 0px;
-    min-height: 51px;
-    overflow: hidden;
-    transition: height 0.2s; }
-    @media only screen and (max-width: 600px) {
-      .sendMessage textarea {
-        padding-top: 18px; } }
+    .sendMessage textarea.nameInput {
+      max-width: 148px;
+      height: 52px;
+      white-space: nowrap;
+      overflow: hidden; }
+      @media only screen and (max-width: 600px) {
+        .sendMessage textarea.nameInput {
+          max-width: 120px; } }
+      @media only screen and (max-width: 375px) {
+        .sendMessage textarea.nameInput {
+          display: none; } }
+    .sendMessage textarea.textInput {
+      flex: 1;
+      height: 0px;
+      min-height: 52px;
+      overflow: hidden;
+      transition: height 0.2s; }
+      @media only screen and (max-width: 600px) {
+        .sendMessage textarea.textInput {
+          padding-top: 18px; } }
 .room {
   display: flex;
   flex-direction: column;
@@ -136,13 +136,11 @@ body {
 input,
 textarea {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1em;
-  line-height: 1em; }
+  font-size: 1em; }
   @media only screen and (max-width: 600px) {
     input,
     textarea {
-      font-size: 0.8em;
-      line-height: 0.8em; } }
+      font-size: 0.8em; } }
 
 *,
 *:before,
@@ -196,4 +194,4 @@ a.button:link {
     color: #ffffff;
     border-color: #D07677; }
 
-/*# sourceMappingURL=app.0494eb586a018d91144d.css.map*/
+/*# sourceMappingURL=app.fd0159c2520fa256025d.css.map*/

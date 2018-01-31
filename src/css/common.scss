@@ -21,11 +21,9 @@ input,
 textarea {
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;
-    line-height: 1em;
 
     @include responsive('<', 600px) {
         font-size: 0.8em;
-        line-height: 0.8em;
     }
 }
 

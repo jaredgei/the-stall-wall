@@ -36,39 +36,40 @@
         }
     }
 
-    input[type=text],
     textarea {
         border: none;
         padding: $medium_spacing $small_spacing;
+        resize: none;
 
         &:focus {
             outline: none;
         }
-    }
 
-    input[type=text] {
-        max-width: 148px;
-        height: 51px;
+        &.nameInput {
+            max-width: 148px;
+            height: 52px;
+            white-space: nowrap;
+            overflow: hidden;
 
-        @include responsive('<', 600px) {
-            max-width: 120px;
+            @include responsive('<', 600px) {
+                max-width: 120px;
+            }
+
+            @include responsive('<', 375px) {
+                display: none;
+            }
         }
 
-        @include responsive('<', 375px) {
-            display: none;
-        }
-    }
+        &.textInput {
+            flex: 1;
+            height: 0px;
+            min-height: 52px;
+            overflow: hidden;
+            transition: height $short_duration;
 
-    textarea {
-        flex: 1;
-        resize: none;
-        height: 0px;
-        min-height: 51px;
-        overflow: hidden;
-        transition: height $short_duration;
-
-        @include responsive('<', 600px) {
-            padding-top: 18px;
+            @include responsive('<', 600px) {
+                padding-top: 18px;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 const Path = require('path');
+const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -70,12 +71,22 @@ webpackConfig.devtool = isProduction ? 'source-map' : 'cheap-eval-source-map';
 if (isProduction) {
     webpackConfig.module.loaders.push({
         test: /\.scss$/,
-        loader: ExtractSASS.extract(['css-loader', 'sass-loader'])
+        loader: ExtractSASS.extract(['css-loader', {
+            loader: 'postcss-loader',
+            options: {
+                plugins: () => [autoprefixer()]
+            }
+        }, 'sass-loader'])
     });
 } else {
     webpackConfig.module.loaders.push({
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        loaders: ['style-loader', 'css-loader', {
+            loader: 'postcss-loader',
+            options: {
+                plugins: () => [autoprefixer()]
+            }
+        }, 'sass-loader']
     });
 }
 

@@ -1,7 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,600);.home {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center; }
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .home h1 {
     text-align: center; }
   .home .logo {
@@ -43,16 +50,21 @@
       display: none; }
 .sendMessage {
   background: #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   border-radius: 4px;
   overflow: hidden;
   color: #504d4d;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   margin: 48px 0;
   width: 100%; }
   .sendMessage .spacer {
     border-right: 1px solid #d6dbdb;
-    align-self: stretch; }
+    -ms-flex-item-align: stretch;
+        align-self: stretch; }
   .sendMessage a.sendButton,
   .sendMessage a.sendButton:link,
   .sendMessage a.sendButton:visited,
@@ -60,11 +72,17 @@
     background: #9DB991;
     color: #ffffff;
     text-decoration: none;
-    align-self: stretch;
+    -ms-flex-item-align: stretch;
+        align-self: stretch;
     padding: 8px 16px;
+    -webkit-transition: background 0.2s;
     transition: background 0.2s;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center; }
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
     .sendMessage a.sendButton:hover,
     .sendMessage a.sendButton:link:hover,
     .sendMessage a.sendButton:visited:hover,
@@ -93,18 +111,28 @@
         .sendMessage textarea.nameInput {
           display: none; } }
     .sendMessage textarea.textInput {
-      flex: 1;
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
       height: 0px;
       min-height: 52px;
       overflow: hidden;
+      -webkit-transition: height 0.2s;
       transition: height 0.2s; }
       @media only screen and (max-width: 600px) {
         .sendMessage textarea.textInput {
           padding-top: 18px; } }
 .room {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center; }
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center; }
   .room h1 {
     margin-bottom: 0; }
   .room .wipeButton {
@@ -120,7 +148,8 @@
     max-width: 456px; }
 html,
 body {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
@@ -145,7 +174,8 @@ textarea {
 *,
 *:before,
 *:after {
-  box-sizing: inherit; }
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit; }
 
 h1 {
   font-size: 3em;
@@ -179,6 +209,7 @@ a.button:link {
   color: #9DB991;
   font-size: 1.2em;
   font-weight: 600;
+  -webkit-transition: background 0.2s, color 0.2s;
   transition: background 0.2s, color 0.2s; }
   a.button:hover,
   a.button:visited:hover,
@@ -194,4 +225,4 @@ a.button:link {
     color: #ffffff;
     border-color: #D07677; }
 
-/*# sourceMappingURL=app.fd0159c2520fa256025d.css.map*/
+/*# sourceMappingURL=app.be7591d7ff94a7d1a216.css.map*/

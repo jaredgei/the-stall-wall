@@ -12,8 +12,9 @@
   "keywords": [],
   "repository": {},
   "author": "Jared Geilich",
-  "license": "",
+  "license": "UNLICENSED",
   "devDependencies": {
+    "autoprefixer": "^8.0.0",
     "babel-core": "^6.8.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^6.2.4",
@@ -30,6 +31,7 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^2.16.1",
     "node-sass": "^4.7.2",
+    "postcss-loader": "^2.1.0",
     "react-router-dom": "^4.2.2",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
